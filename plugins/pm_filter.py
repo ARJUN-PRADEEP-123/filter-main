@@ -432,6 +432,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('T T S', callback_data='tts'),
             InlineKeyboardButton('Corona', callback_data='corona')
             ],[
+            InlineKeyboardButton('Sticker-Id', callback_data='stickerid'),
+            ],[
             InlineKeyboardButton('Home', callback_data='start'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -480,6 +482,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.ABOOK_TXT,
             disable_web_page_preview=True,
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
+    elif query.data == "stickerid":
+        buttons = [[
+            InlineKeyboardButton('𝐵𝑎𝑐𝑘', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=Script.STICKER_TXT,
             reply_markup=reply_markup,
             parse_mode='html'
         )
